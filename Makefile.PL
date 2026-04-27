@@ -52,6 +52,19 @@ my %WriteMakefileArgs =
     VERSION_FROM     => 'lib/tstregex.pm', 
     ABSTRACT_FROM    => 'lib/tstregex.pm', 
     LICENSE          => 'artistic_2',
+    META_MERGE       => 
+        {
+        'meta-spec' => { version => 2 },
+        resources   => 
+            {
+            repository => 
+                {
+                type => 'git',
+                url  => 'https://github.com/odjectif/tstregex.git',
+                web  => 'https://github.com/odjectif/tstregex',
+                },
+            },
+        },
     
     # Under Windows, we install the .bat. Under Unix/Cygwin, 
     # we don't need a physical file in bin/ yet (handled by symlink).
