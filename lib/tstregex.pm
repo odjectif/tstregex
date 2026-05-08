@@ -374,7 +374,7 @@ package main;
 
 package tstregex;
     {
-    our $VERSION = '1.00';
+    our $VERSION = '1.01';
     use Exporter qw(import);
 
     our @EXPORT  = qw(
@@ -421,6 +421,13 @@ package tstregex;
     sub tstregex
         {
         my ($ctx, $pattern) = @_;
+        # FIX: re init start-state fields in case of multiple test patterns  
+        $ctx -> {'fail_token'}      = tstregex::C_EMPTY; 
+        $ctx -> {'match_portion'}   = undef;
+        $ctx -> {'right_unmatch'}   = undef;
+        $ctx -> {'match_len'}       = 0;
+        $ctx -> {'full_match'}      = 0;
+        $ctx -> {'left_unmatch'}    = undef;
         my $re_raw  = $ctx->{re_raw};
         my $org_pat = $pattern;
         my $internal_offset = 0;
