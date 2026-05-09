@@ -109,6 +109,14 @@ When a complex regex fails, Perl usually just says "No Match". This tool
 identifies exactly B<where> and B<why> it failed by finding the longest possible
 partial match.
 
+=head1 EXAMPLE
+
+  $ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
+  abc123
+  abcB<12a> (B<^[a-z]*>\d{3}$)
+
+I<The tool highlights the part of the string where the match failed.>
+
 =head2 The "Nibbling" Engine
 
 The diagnostic logic uses a "Nibbling" (grignotage) strategy:
