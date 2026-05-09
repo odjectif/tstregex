@@ -13,10 +13,14 @@ use warnings;
 =head1 NAME
 
 tstregex - A Hybrid Regex Diagnostic Tool (single file Library module and command tool)
-shows the longest Regular Expression match / highlight the rejected partB<Example:>
+shows the longest Regular Expression match / highlight the rejected part
+
+B<Example:>
 
 $ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
+
 abc123
+
 abcB<12a> (B<^[a-z]*>\d{3}$)
 
 =head1 SYNOPSIS
