@@ -15,15 +15,23 @@ use warnings;
 tstregex - A Hybrid Regex Diagnostic Tool (single file Library module and command tool)
 shows the longest Regular Expression match / highlight the rejected part
 
+B<Example:>
+
+$ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
+abc123
+abcB<12a> (B<^[a-z]*>\d{3}$)
+
 =head1 SYNOPSIS
 
 # Example of command and its terminal output:
 
-B<tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'>
+B<Example:>
+
+C<$ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'>
 
 abc123
 
-abc-B<12a> (^[a-z]*-B<\d{3}$>)
+abcB<12a> (C<^[a-z]*>B<\d{3}$>)
 
 # The bold parts above highlight the rejected string and regex token.
 
