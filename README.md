@@ -7,6 +7,13 @@
 
 `tstregex` is a command-line utility designed to provide surgical insights into Perl regular expressions. Unlike standard matchers, it uses a custom "nibbling" engine to tokenize patterns and provide exact, character-level failure diagnostics. Whether you are debugging complex nested groups or hardening patterns against ReDoS, `tstregex` provides the engine you need to see exactly what is happening under the hood.
 
+<pre>
+Example
+$ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
+abc123
+abc<b>12a</b> (^[a-z]*<b>\d{3}$</b>)
+</pre>
+
 ---
 
 ## Features
