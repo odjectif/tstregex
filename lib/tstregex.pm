@@ -25,7 +25,7 @@ abcB<12a> (B<^[a-z]*>\d{3}$)
 
 =head1 SYNOPSIS
 
-# Example of command and its terminal output:
+# Example of command and its terminal output :
 
 B<Example:>
 
