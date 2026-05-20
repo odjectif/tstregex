@@ -1,5 +1,14 @@
 Revision history for tstregex
 
+1.03  2026-05-19
+      - Fix Windows case-insensitivity issue in MANIFEST.
+      - Ensure lib/Tstregex.pm is properly indexed with capital T.
+      - Fix the stubs for windows and Linux
+
+1.02  2026-05-19
+      - Rename module to Tstregex to fix MetaCPAN indexing issue.
+      - Keep command line script as 'tstregex' (lowercase) for user convenience.
+      
 1.01  2023-05-09
     - Fixed start-state variable init in case of multiple pattern test
 

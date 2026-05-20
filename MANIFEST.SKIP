@@ -21,3 +21,6 @@
 \.bak$
 \.tmp$
 \.gz$
+
+# --- MISC
+^fails\.sh$
