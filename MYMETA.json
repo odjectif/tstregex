@@ -1,5 +1,5 @@
 {
-   "abstract" : "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part",
+   "abstract" : "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $ perl lib/Tstregex.pm '/^[a-z]*\\d{3}$/' 'abc123' 'abc12a' abc123 abcB<12a> (B<^[a-z]*>\\d{3}$)",
    "author" : [
       "Olivier Delouya <olivier_delouya@hotmail.com>"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : 2
    },
-   "name" : "tstregex",
+   "name" : "Tstregex",
    "no_index" : {
       "directory" : [
          "t",
@@ -39,6 +39,13 @@
       }
    },
    "release_status" : "stable",
-   "version" : "1.00",
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/odjectif/tstregex.git",
+         "web" : "https://github.com/odjectif/tstregex"
+      }
+   },
+   "version" : "1.03",
    "x_serialization_backend" : "JSON::PP version 4.02"
 }

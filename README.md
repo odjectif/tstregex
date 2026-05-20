@@ -9,7 +9,7 @@
 
 ### Visual Diagnostic
 
-**Command:** `$ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'`
+**Command:** `$ perl lib/Tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'`
 
 **Output:** abc123  
 abc**12a** (^[a-z]***\d{3}$**)

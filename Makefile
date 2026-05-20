@@ -1,4 +1,4 @@
-# This Makefile is for the tstregex extension to perl.
+# This Makefile is for the Tstregex extension to perl.
 #
 # It was generated automatically by MakeMaker version
 # 7.64 (Revision: 76400) from the contents of
@@ -11,17 +11,18 @@
 
 #   MakeMaker Parameters:
 
-#     ABSTRACT_FROM => q[lib/tstregex.pm]
+#     ABSTRACT_FROM => q[lib/Tstregex.pm]
 #     AUTHOR => [q[Olivier Delouya <olivier_delouya@hotmail.com>]]
 #     BUILD_REQUIRES => {  }
 #     CONFIGURE_REQUIRES => {  }
 #     EXE_FILES => [q[tstregex]]
 #     LICENSE => q[artistic_2]
+#     META_MERGE => { meta-spec=>{ version=>q[2] }, resources=>{ repository=>{ type=>q[git], url=>q[https://github.com/odjectif/tstregex.git], web=>q[https://github.com/odjectif/tstregex] } } }
 #     MIN_PERL_VERSION => q[5.010]
-#     NAME => q[tstregex]
+#     NAME => q[Tstregex]
 #     PREREQ_PM => { Term::ANSIColor=>q[0], Time::HiRes=>q[0] }
 #     TEST_REQUIRES => {  }
-#     VERSION_FROM => q[lib/tstregex.pm]
+#     VERSION_FROM => q[lib/Tstregex.pm]
 #     clean => { FILES=>q[tstregex-* MYMETA.* blib* bin/tstregex.bat] }
 #     dist => { COMPRESS=>q[gzip -9f], SUFFIX=>q[gz] }
 
@@ -61,13 +62,13 @@ VENDORLIBEXP = /usr/share/perl5/vendor_perl/5.26
 AR_STATIC_ARGS = cr
 DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
-NAME = tstregex
-NAME_SYM = tstregex
-VERSION = 1.00
+NAME = Tstregex
+NAME_SYM = Tstregex
+VERSION = 1.03
 VERSION_MACRO = VERSION
-VERSION_SYM = 1_00
+VERSION_SYM = 1_03
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 1.00
+XS_VERSION = 1.03
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -155,11 +156,11 @@ MM_REVISION = 76400
 # PARENT_NAME = NAME without BASEEXT and no trailing :: (eg Foo::Bar)
 # DLBASE  = Basename part of dynamic library. May be just equal BASEEXT.
 MAKE = make
-FULLEXT = tstregex
-BASEEXT = tstregex
+FULLEXT = Tstregex
+BASEEXT = Tstregex
 PARENT_NAME = 
 DLBASE = $(BASEEXT)
-VERSION_FROM = lib/tstregex.pm
+VERSION_FROM = lib/Tstregex.pm
 OBJECT = 
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
@@ -171,7 +172,7 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = lib/tstregex.pm
+MAN3PODS = lib/Tstregex.pm
 
 # Where is the Config information that we are using/depend on
 CONFIGDEP = $(PERL_ARCHLIBDEP)$(DFSEP)Config.pm $(PERL_INCDEP)$(DFSEP)config.h
@@ -194,7 +195,7 @@ PERL_ARCHIVEDEP    =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/tstregex.pm
+TO_INST_PM = lib/Tstregex.pm
 
 
 # --- MakeMaker platform_constants section:
@@ -263,8 +264,8 @@ CI = ci -u
 RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
-DISTNAME = tstregex
-DISTVNAME = tstregex-1.00
+DISTNAME = Tstregex
+DISTVNAME = Tstregex-1.03
 
 
 # --- MakeMaker macro section:
@@ -418,9 +419,9 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all config  \
-	lib/tstregex.pm
+	lib/Tstregex.pm
 	$(NOECHO) $(POD2MAN) --section=$(MAN3SECTION) --perm_rw=$(PERM_RW) -u \
-	  lib/tstregex.pm $(INST_MAN3DIR)/tstregex.$(MAN3EXT) 
+	  lib/Tstregex.pm $(INST_MAN3DIR)/Tstregex.$(MAN3EXT) 
 
 
 
@@ -506,7 +507,7 @@ realclean purge :: realclean_subdirs
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
 	$(NOECHO) $(ECHO) '---' > META_new.yml
-	$(NOECHO) $(ECHO) 'abstract: '\''A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $$ perl lib/Tstregex.pm '\''/^[a-z]*\\d{3}$$/'\'' '\''abc123'\'' '\''abc12a'\'' abc123 abcB<12a> (B<^[a-z]*>\\d{3}$$)"' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  - '\''Olivier Delouya <olivier_delouya@hotmail.com>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
@@ -519,7 +520,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
 	$(NOECHO) $(ECHO) '  version: '\''1.4'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'name: tstregex' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: Tstregex' >> META_new.yml
 	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
@@ -528,12 +529,14 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  Term::ANSIColor: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  Time::HiRes: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) '  perl: '\''5.010'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''1.00'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  repository: https://github.com/odjectif/tstregex.git' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''1.03'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'x_serialization_backend: '\''CPAN::Meta::YAML version 0.018'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
-	$(NOECHO) $(ECHO) '   "abstract" : "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $$ perl lib/Tstregex.pm '\''/^[a-z]*\\d{3}$$/'\'' '\''abc123'\'' '\''abc12a'\'' abc123 abcB<12a> (B<^[a-z]*>\\d{3}$$)",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "Olivier Delouya <olivier_delouya@hotmail.com>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
@@ -546,7 +549,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
 	$(NOECHO) $(ECHO) '      "version" : 2' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "name" : "tstregex",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "Tstregex",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
 	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
@@ -573,7 +576,14 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
 	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "1.00",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "resources" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "repository" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "type" : "git",' >> META_new.json
+	$(NOECHO) $(ECHO) '         "url" : "https://github.com/odjectif/tstregex.git",' >> META_new.json
+	$(NOECHO) $(ECHO) '         "web" : "https://github.com/odjectif/tstregex"' >> META_new.json
+	$(NOECHO) $(ECHO) '      }' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "1.03",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 4.02"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
@@ -883,24 +893,24 @@ testdb_static :: static pure_all
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="tstregex" VERSION="1.00">' > tstregex.ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part</ABSTRACT>' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR>Olivier Delouya &lt;olivier_delouya@hotmail.com&gt;</AUTHOR>' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '        <PERLCORE VERSION="5,010,0,0" />' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Term::ANSIColor" />' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Time::HiRes" />' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-cygwin-threads-multi-5.26" />' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> tstregex.ppd
-	$(NOECHO) $(ECHO) '</SOFTPKG>' >> tstregex.ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="Tstregex" VERSION="1.03">' > Tstregex.ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $$ perl lib/Tstregex.pm '\''/^[a-z]*\d{3}$$/'\'' '\''abc123'\'' '\''abc12a'\'' abc123 abcB&lt;12a&gt; (B&lt;^[a-z]*&gt;\d{3}$$)</ABSTRACT>' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>Olivier Delouya &lt;olivier_delouya@hotmail.com&gt;</AUTHOR>' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '        <PERLCORE VERSION="5,010,0,0" />' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Term::ANSIColor" />' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Time::HiRes" />' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-cygwin-threads-multi-5.26" />' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '</SOFTPKG>' >> Tstregex.ppd
 
 
 # --- MakeMaker pm_to_blib section:
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  'lib/tstregex.pm' 'blib/lib/tstregex.pm' 
+	  'lib/Tstregex.pm' 'blib/lib/Tstregex.pm' 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 
@@ -921,8 +931,8 @@ config ::
 
 # --- MakeMaker postamble section:
 pure_all ::
-	@echo "Normalizing line endings in blib/script/tstregex.pm..."
-	$(PERL) -pi -e 's/\r//g' lib/tstregex.pm
+	@echo "Normalizing line endings in blib/script/Tstregex.pm..."
+	$(PERL) -pi -e 's/\r//g' lib/Tstregex.pm
 
 install ::
     # On Unix/Cygwin, create a direct symlink to the .pm engine.
@@ -932,8 +942,8 @@ install ::
 	#supress old stub
 	$(RM_F) $(DESTDIR)$(INSTALLSCRIPT)/tstregex
 	# Use absolute paths via MakeMaker variables to avoid dandling links
-	ln -sfv $(DESTDIR)$(INSTALLSITELIB)/tstregex.pm $(DESTDIR)$(INSTALLSCRIPT)/tstregex
-	chmod +x $(DESTDIR)$(INSTALLSCRIPT)/tstregex $(DESTDIR)$(INSTALLSITELIB)/tstregex.pm
+	ln -sfv $(DESTDIR)$(INSTALLSITELIB)/Tstregex.pm $(DESTDIR)$(INSTALLSCRIPT)/tstregex
+	chmod +x $(DESTDIR)$(INSTALLSCRIPT)/tstregex $(DESTDIR)$(INSTALLSITELIB)/Tstregex.pm
 
 superclean :: veryclean
 	@echo "The big clean (Superclean)..."

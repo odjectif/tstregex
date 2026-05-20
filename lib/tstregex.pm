@@ -2,7 +2,7 @@
 
 ###############################################
 # Author:        Olivier Delouya - 2026
-# File:          tstregex.pm (Hybrid Modulino)
+# File:          Tstregex.pm (Hybrid Modulino)
 # Content:       Regex longest match diagnostic
 # indent:        Whitesmith (perltidy -bl -bli)
 ###############################################
@@ -12,30 +12,26 @@ use warnings;
 
 =head1 NAME
 
-tstregex - A Hybrid Regex Diagnostic Tool (single file Library module and command tool)
+Tstregex - A Hybrid Regex Diagnostic Tool (single file Library module and command tool)
 shows the longest Regular Expression match / highlight the rejected part
 
-B<Example:>
+Example:
 
-$ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
+=over 4
 
-abc123
+=item $ perl lib/Tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
 
-abcB<12a> (B<^[a-z]*>\d{3}$)
+=item abc123
+
+=item abcB<12a> (^[a-z]*B<\d{3}$>)
+
+=back
+     
+# Above, the normal parts are the longuest matching substring when bold parts highlights the rejected substring (idem with regexp lexical groups between parenthesis)
 
 =head1 SYNOPSIS
 
-# Example of command and its terminal output :
-
-B<Example:>
-
-C<$ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'>
-
-abc123
-
-abcB<12a> (C<^[a-z]*>B<\d{3}$>)
-
-# The bold parts above highlight the rejected string and regex token.
+C<$tstregex 'regex' string1 string2 ...   stringN
 
 =head1 OPTIONS (CLI)
 
@@ -57,13 +53,13 @@ Triggers the Enriched Diagnostic View. It displays:
 
 =head2 -a --assert
 
-Misc: performs a huge test suite various a large collection of regexp tests with tstregex..
+Misc: performs a huge test suite various a large collection of regexp tests with Tstregex..
 
 =head2
 
 =head1 Perl Module SYNOPSIS
 
-  use tstregex;
+  use Tstregex;
   my $ctx = tstregex_init_desc('/^\d{3}/');
   tstregex($ctx, '12a');
   if (!tstregex_is_full_match($res))
@@ -121,7 +117,7 @@ partial match.
 
 =head1 EXAMPLE
 
-  $ perl lib/tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
+  $ perl lib/Tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
   abc123
   abcB<12a> (B<^[a-z]*>\d{3}$)
 
@@ -213,7 +209,7 @@ package main;
                 };
 
             # Force injection into all relevant namespaces
-            foreach my $pkg ('main', 'tstregex', 'DB')
+            foreach my $pkg ('main', 'Tstregex', 'DB')
                 {
                 *{"${pkg}::d"} = $debug_sub;
                 }
@@ -257,20 +253,20 @@ package main;
         $argc = scalar @$argv;
         
         my $re_raw = shift @{$argv};
-        my $ctx = tstregex::tstregex_init_desc($re_raw);
+        my $ctx = Tstregex::tstregex_init_desc($re_raw);
         my $global_result = 0; # success! BE POSITIVE !!
         foreach my $pattern (@{$argv})
             {
             my $t0 = [gettimeofday] if $mode_diag;
-            my $result = tstregex::tstregex($ctx, $pattern);
+            my $result = Tstregex::tstregex($ctx, $pattern);
             $global_result = 1 if($result);
             $mode_diag ? _display_enriched($pattern, $ctx, tv_interval($t0))
                        : _display_standard($pattern, $ctx);
             if($verbose)
                 {
-                print $result?  'Match':'UNmatch', '! Match length: ', tstregex::tstregex_get_match_len($ctx), '; ';
-                print $result? ('Match portion: ', Term::ANSIColor::UNDERLINE(), tstregex::tstregex_get_match_portion($ctx))
-                             : ('Fail token: ', tstregex::tstregex_get_fail_token($ctx));
+                print $result?  'Match':'UNmatch', '! Match length: ', Tstregex::tstregex_get_match_len($ctx), '; ';
+                print $result? ('Match portion: ', Term::ANSIColor::UNDERLINE(), Tstregex::tstregex_get_match_portion($ctx))
+                             : ('Fail token: ', Tstregex::tstregex_get_fail_token($ctx));
                 print Term::ANSIColor::RESET(), "\n";
                 print $ctx->{warning} if($verbose && $ctx->{warning} ne '');
                 }
@@ -306,13 +302,13 @@ package main;
             my @strings = grep { $_ ne '0' && $_ ne '1' } @rest;
 
             print BOLD, YELLOW, 'Testing Regex: ', RESET, "$re\n";
-            my $ctx = tstregex::tstregex_init_desc($re);
+            my $ctx = Tstregex::tstregex_init_desc($re);
             print 'Warning ', $ctx->{warning}, "\n" if($verbose && $ctx->{warning} ne '');
             foreach my $s (@strings)
                 {
                 my $t0;
                 $t0 = [gettimeofday] if $mode_diag;
-                tstregex::tstregex($ctx, $s);
+                Tstregex::tstregex($ctx, $s);
                 $mode_diag ? _display_enriched($s, $ctx, tv_interval($t0))
                            : _display_standard($s, $ctx);
                 }
@@ -323,16 +319,16 @@ package main;
     sub _display_standard
         {
         my ($pattern, $ctx) = @_;
-        if (tstregex::tstregex_is_full_match($ctx))
+        if (Tstregex::tstregex_is_full_match($ctx))
             {
             print "$pattern";
             print "\n";
             }
         else
             {
-            my $match_len  = tstregex::tstregex_get_match_len ($ctx);
-            my $fail_token = tstregex::tstregex_get_fail_token($ctx);
-            my $re_clean   = tstregex::tstregex_get_re_clean  ($ctx);
+            my $match_len  = Tstregex::tstregex_get_match_len ($ctx);
+            my $fail_token = Tstregex::tstregex_get_fail_token($ctx);
+            my $re_clean   = Tstregex::tstregex_get_re_clean  ($ctx);
             print substr($pattern, 0, $match_len), BOLD, substr($pattern, $match_len), RESET;
             my $off = length($re_clean) - length($fail_token);
             print ' (', substr($re_clean, 0, $off), BOLD, $fail_token, RESET, ")\n";
@@ -344,17 +340,17 @@ package main;
         my ($pattern, $ctx, $elapsed) = @_;
         print BOLD, MAGENTA, '--- Diagnostic View ---', RESET, "\n";
 
-        if (tstregex::tstregex_is_full_match($ctx))
+        if (Tstregex::tstregex_is_full_match($ctx))
             {
             print GREEN, '  Result: ', RESET, "$pattern (FULL MATCH)\n";
             }
         else
             {
-            my $match_len  = tstregex::tstregex_get_match_len    ($ctx);
-            my $fail_token = tstregex::tstregex_get_fail_token   ($ctx);
-            my $re_clean   = tstregex::tstregex_get_re_clean     ($ctx);
-            my $prefix_off = tstregex::tstregex_get_prefix_offset($ctx);
-            my $re_raw     = tstregex::tstregex_get_re_raw        ($ctx);
+            my $match_len  = Tstregex::tstregex_get_match_len    ($ctx);
+            my $fail_token = Tstregex::tstregex_get_fail_token   ($ctx);
+            my $re_clean   = Tstregex::tstregex_get_re_clean     ($ctx);
+            my $prefix_off = Tstregex::tstregex_get_prefix_offset($ctx);
+            my $re_raw     = Tstregex::tstregex_get_re_raw        ($ctx);
 
             print YELLOW, '  Result: ', RESET, substr($pattern, 0, $match_len),
                   BOLD, WHITE, substr($pattern, $match_len), RESET;
@@ -371,11 +367,11 @@ package main;
 
     sub help
         {
-        print BOLD, WHITE, "tstregex.pm - Longest match Regular Expression Diagnostic Tool (2026 - PerlOD)\n", RESET;
+        print BOLD, WHITE, "Tstregex.pm - Longest match Regular Expression Diagnostic Tool (2026 - PerlOD)\n", RESET;
         print "Usage:\n";
-        print "  perl tstregex.pm [options] 'regex' 'string1' ['string2' ...]\n\n";
+        print "  perl Tstregex.pm [options] 'regex' 'string1' ['string2' ...]\n\n";
         print "Examples:\n";
-        print "  perl tstregex.pm '([0-3][0-9])/[0-1][0-9]/\\d{4}' '21/72/1985'\n";
+        print "  perl Tstregex.pm '([0-3][0-9])/[0-1][0-9]/\\d{4}' '21/72/1985'\n";
         print '  21/', BOLD, '72/1985', RESET, ' ([0-3][0-9]/', BOLD, '[0-1][0-9]/\d{4}', RESET, ")\n\n";
         print BOLD, 'DELIMITERS ', RESET, "are optional\n";
         print "  Supported: /.../, m!...!, m{...}. Modifiers (/i, /x, /s...) and captures are supported.\n\n";
@@ -390,9 +386,9 @@ package main;
 
 1;
 
-package tstregex;
+package Tstregex;
     {
-    our $VERSION = '1.01';
+    our $VERSION = '1.04';
     use Exporter qw(import);
 
     our @EXPORT  = qw(
@@ -440,7 +436,7 @@ package tstregex;
         {
         my ($ctx, $pattern) = @_;
         # FIX: re init start-state fields in case of multiple test patterns  
-        $ctx -> {'fail_token'}      = tstregex::C_EMPTY; 
+        $ctx -> {'fail_token'}      = Tstregex::C_EMPTY; 
         $ctx -> {'match_portion'}   = undef;
         $ctx -> {'right_unmatch'}   = undef;
         $ctx -> {'match_len'}       = 0;
@@ -497,7 +493,7 @@ package tstregex;
             }
 
         # Nibbling phase: find the longest matching lexical group
-        my $match_reg = tstregex::C_EMPTY;
+        my $match_reg = Tstregex::C_EMPTY;
         foreach my $step (@{$ctx->{steps}})
             {
             if ($pattern =~ qr/$step/)
@@ -511,7 +507,7 @@ package tstregex;
         # Fine-tune the match length character by character
         # Append a \z to avoid Perl to skip final \n
         # if Nibbling failed ($match_reg empty), get the full regex for fine-tuning.
-        my $target_re = ($match_reg ne tstregex::C_EMPTY) ? $match_reg : $ctx->{re_clean};
+        my $target_re = ($match_reg ne Tstregex::C_EMPTY) ? $match_reg : $ctx->{re_clean};
         # critical! add starting anchor (\A) to force coherency check from the first char..
         my ($match_work, $warn) = _safe_qr("\\A$target_re\\z"); # (qr/\A$target_re\z/, undef); #;
         for (my $i = length($pattern); $i >= 0; $i--)
@@ -526,17 +522,17 @@ package tstregex;
         my $tail_re = (scalar @{$ctx->{steps}}) ? $ctx->{steps}->[0] : $ctx->{re_clean};
         my $remaining_re = substr($tail_re, length($match_reg));
 
-        if ($remaining_re ne tstregex::C_EMPTY)
+        if ($remaining_re ne Tstregex::C_EMPTY)
             {
             # get the first token for analyse
             my $next_tokens = _get_lex_groups($remaining_re);
-            my $first_token = $next_tokens->[0] // tstregex::C_EMPTY;
+            my $first_token = $next_tokens->[0] // Tstregex::C_EMPTY;
             $ctx->{fail_token} = $remaining_re;
             $ctx->{fail_token} = $first_token if ($first_token =~ /^(\\b|\^|\$)$/); # Anchor case (0 width): want detail (just \b, ^ or $)
             }
         else
             {
-            $ctx->{fail_token} = tstregex::C_EMPTY;
+            $ctx->{fail_token} = Tstregex::C_EMPTY;
             }
 
         # Ensure captures is empty/undef on failure
@@ -565,7 +561,7 @@ package tstregex;
             {
             re_raw => $re_raw, re_compiled => $re_compiled, re_clean => $re_clean,
             steps => $steps, prefix_offset => $prefix_off, match_len => 0, 
-            fail_token => tstregex::C_EMPTY, full_match => 0,match_portion => undef,
+            fail_token => Tstregex::C_EMPTY, full_match => 0,match_portion => undef,
             match_undef => $match_undef, left_unmatch => undef, right_unmatch => undef, 
             warning => $last_warning,
             };
@@ -577,10 +573,10 @@ package tstregex;
     sub _unwrap_regex
         {
         my ($raw) = @_;
-        return (qr//, tstregex::C_EMPTY, 0) if !defined $raw || $raw eq tstregex::C_EMPTY;
+        return (qr//, Tstregex::C_EMPTY, 0) if !defined $raw || $raw eq Tstregex::C_EMPTY;
         
         my $raw_org = $raw;
-        my $options = tstregex::C_EMPTY;
+        my $options = Tstregex::C_EMPTY;
     
         # 1. Extract trailing options (ismxg)
         while ($raw =~ s/([ismxg])$//) 
@@ -624,7 +620,7 @@ package tstregex;
     sub _strop 
         {
         my ($raw) = @_;
-        return $raw if !defined $raw || $raw eq tstregex::C_EMPTY;
+        return $raw if !defined $raw || $raw eq Tstregex::C_EMPTY;
         
         # Remove leading/trailing whitespace
         $raw =~ s/^\s+|\s+$//g; 
@@ -674,7 +670,7 @@ package tstregex;
         my ($regex) = @_;
         my $tokens = _get_lex_groups($regex);
         my @results;
-        my $current = join(tstregex::C_EMPTY, @$tokens);
+        my $current = join(Tstregex::C_EMPTY, @$tokens);
 
         while (@$tokens)
             {
@@ -687,7 +683,7 @@ package tstregex;
                 if (eval { qr/$v/ }) { push @results, $v; }
                 }
             my $last = pop @$tokens;
-            substr($current, -length($last)) = tstregex::C_EMPTY if defined $last;
+            substr($current, -length($last)) = Tstregex::C_EMPTY if defined $last;
             }
         return \@results;
         }

@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use POSIX qw(strftime);
 use Test::More;
-use tstregex;
+use Tstregex;
 
 # Persistent variables for the test script execution
 my $header_done = 0;
@@ -31,11 +31,11 @@ sub check_tst
     local $Test::Builder::Level = $Test::Builder::Level + 1;
 
     # 2. Engine Execution
-    my $ctx        = tstregex::tstregex_init_desc($re);
-    my $got_match  = tstregex::tstregex($ctx, $str);
-    my $got_len    = tstregex::tstregex_get_match_len($ctx);
-    my $got_expect = tstregex::tstregex_get_fail_token($ctx);
-    my $got_caps   = tstregex::tstregex_get_captures($ctx) // [];
+    my $ctx        = Tstregex::tstregex_init_desc($re);
+    my $got_match  = Tstregex::tstregex($ctx, $str);
+    my $got_len    = Tstregex::tstregex_get_match_len($ctx);
+    my $got_expect = Tstregex::tstregex_get_fail_token($ctx);
+    my $got_caps   = Tstregex::tstregex_get_captures($ctx) // [];
     if(!defined($got_match))
         {
         # something went wrong with the regex engine which just rejected the test

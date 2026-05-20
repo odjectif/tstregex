@@ -15,9 +15,9 @@ unless ($is_windows)
     # create the source file if absent to force Make to treat bin, 
     if (! -f 'tstregex') 
         {
-        print "Creation du proxy tstregex pour Linux...\n";
+        print "Creation du proxy Tstregex pour Linux...\n";
         open my $fh, '>', 'tstregex' or die $!;
-        print $fh "#!/usr/bin/perl\nuse tstregex; tstregex::main();\n";
+        print $fh "#!/usr/bin/perl\nuse Tstregex;\n main( scalar \@ARGV, \\\@ARGV );\n";
         close $fh;
         chmod 0755, 'tstregex';
         }
@@ -46,11 +46,11 @@ if ($is_windows)
     
 my %WriteMakefileArgs = 
     (
-    NAME             => 'tstregex',
+    NAME             => 'Tstregex',
     AUTHOR           => 'Olivier Delouya <olivier_delouya@hotmail.com>',
     # Source of truth is now in lib/
-    VERSION_FROM     => 'lib/tstregex.pm', 
-    ABSTRACT_FROM    => 'lib/tstregex.pm', 
+    VERSION_FROM     => 'lib/Tstregex.pm', 
+    ABSTRACT_FROM    => 'lib/Tstregex.pm', 
     LICENSE          => 'artistic_2',
     META_MERGE       => 
         {
@@ -90,12 +90,12 @@ WriteMakefile(%WriteMakefileArgs);
 sub MY::postamble {
     my $res = '';
 
-    # Post-install: Create the symlink tstregex -> lib/tstregex.pm
+    # Post-install: Create the symlink tstregex -> lib/Tstregex.pm
     unless ($is_windows) {
         $res .= <<'MAKE_FRAG';
 pure_all ::
-	@echo "Normalizing line endings in blib/script/tstregex.pm..."
-	$(PERL) -pi -e 's/\r//g' lib/tstregex.pm
+	@echo "Normalizing line endings in blib/script/Tstregex.pm..."
+	$(PERL) -pi -e 's/\r//g' lib/Tstregex.pm
 
 install ::
     # On Unix/Cygwin, create a direct symlink to the .pm engine.
@@ -105,8 +105,8 @@ install ::
 	#supress old stub
 	$(RM_F) $(DESTDIR)$(INSTALLSCRIPT)/tstregex
 	# Use absolute paths via MakeMaker variables to avoid dandling links
-	ln -sfv $(DESTDIR)$(INSTALLSITELIB)/tstregex.pm $(DESTDIR)$(INSTALLSCRIPT)/tstregex
-	chmod +x $(DESTDIR)$(INSTALLSCRIPT)/tstregex $(DESTDIR)$(INSTALLSITELIB)/tstregex.pm
+	ln -sfv $(DESTDIR)$(INSTALLSITELIB)/Tstregex.pm $(DESTDIR)$(INSTALLSCRIPT)/tstregex
+	chmod +x $(DESTDIR)$(INSTALLSCRIPT)/tstregex $(DESTDIR)$(INSTALLSITELIB)/Tstregex.pm
 MAKE_FRAG
     }
 
@@ -142,7 +142,7 @@ else
     {
     print "\n" . "=" x 60 . "\n";
     print "UNIX/LINUX ENVIRONMENT DETECTED:\n";
-    print "Symlink created: tstregex -> tstregex.pm\n";
+    print "Symlink created: tstregex -> Tstregex.pm\n";
     print "Line endings normalized (LF).\n";
     print "=" x 60 . "\n\n";
     }
