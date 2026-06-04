@@ -14,28 +14,19 @@ use warnings;
 
 Tstregex - A Hybrid Regex Diagnostic Tool (single file Library module and command tool)
 
-=head1 SYNOPSIS
+Z<>shows the longest Regular Expression match / highlight the rejected part
 
-shows the longest Regular Expression match / highlight the rejected part
+Z<>Example:
 
-Example:
+Z<>$ perl lib/Tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
 
-=over 4
+Z<>abc123
 
-=item $ perl lib/Tstregex.pm '/^[a-z]*\d{3}$/' 'abc123' 'abc12a'
-
-=item abc123
-
-=item abcB<12a> (^[a-z]*B<\d{3}$>)
-
-=back
-
-=cut
-     
+Z<>abcB<12a> (^[a-z]*B<\d{3}$>)
 
 =head1 SYNOPSIS
 
-C<$tstregex 'regex' string1 string2 ...   stringN
+C<$tstregex 'regex' string1 string2 ...   stringN>
 
 =head1 OPTIONS (CLI)
 
@@ -392,7 +383,7 @@ package main;
 
 package Tstregex;
     {
-    our $VERSION = '1.06';
+    our $VERSION = '1.07';
     use Exporter qw(import);
 
     our @EXPORT  = qw(
