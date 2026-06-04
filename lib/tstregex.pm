@@ -30,8 +30,6 @@ Example:
 
 =back
 
-# Above, the normal parts are the longest matching substring when bold parts highlight the rejected substring
-
 =cut
      
 
@@ -394,7 +392,7 @@ package main;
 
 package Tstregex;
     {
-    our $VERSION = '1.05';
+    our $VERSION = '1.06';
     use Exporter qw(import);
 
     our @EXPORT  = qw(

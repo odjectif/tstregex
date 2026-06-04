@@ -22,3 +22,4 @@ t/13-bounds-quantifiers.t
 t/14-look-around.t
 t/15-anchors.t
 t/Helper.pm
+test_doc.html
