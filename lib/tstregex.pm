@@ -13,6 +13,9 @@ use warnings;
 =head1 NAME
 
 Tstregex - A Hybrid Regex Diagnostic Tool (single file Library module and command tool)
+
+=head1 SYNOPSIS
+
 shows the longest Regular Expression match / highlight the rejected part
 
 Example:
@@ -26,8 +29,11 @@ Example:
 =item abcB<12a> (^[a-z]*B<\d{3}$>)
 
 =back
+
+# Above, the normal parts are the longest matching substring when bold parts highlight the rejected substring
+
+=cut
      
-# Above, the normal parts are the longuest matching substring when bold parts highlights the rejected substring (idem with regexp lexical groups between parenthesis)
 
 =head1 SYNOPSIS
 
@@ -388,7 +394,7 @@ package main;
 
 package Tstregex;
     {
-    our $VERSION = '1.04';
+    our $VERSION = '1.05';
     use Exporter qw(import);
 
     our @EXPORT  = qw(

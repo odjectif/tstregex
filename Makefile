@@ -64,11 +64,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Tstregex
 NAME_SYM = Tstregex
-VERSION = 1.03
+VERSION = 1.04
 VERSION_MACRO = VERSION
-VERSION_SYM = 1_03
+VERSION_SYM = 1_04
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 1.03
+XS_VERSION = 1.04
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -265,7 +265,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Tstregex
-DISTVNAME = Tstregex-1.03
+DISTVNAME = Tstregex-1.04
 
 
 # --- MakeMaker macro section:
@@ -507,7 +507,7 @@ realclean purge :: realclean_subdirs
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
 	$(NOECHO) $(ECHO) '---' > META_new.yml
-	$(NOECHO) $(ECHO) 'abstract: "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $$ perl lib/Tstregex.pm '\''/^[a-z]*\\d{3}$$/'\'' '\''abc123'\'' '\''abc12a'\'' abc123 abcB<12a> (B<^[a-z]*>\\d{3}$$)"' >> META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  - '\''Olivier Delouya <olivier_delouya@hotmail.com>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
@@ -531,12 +531,12 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  perl: '\''5.010'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  repository: https://github.com/odjectif/tstregex.git' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''1.03'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''1.04'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'x_serialization_backend: '\''CPAN::Meta::YAML version 0.018'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
-	$(NOECHO) $(ECHO) '   "abstract" : "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $$ perl lib/Tstregex.pm '\''/^[a-z]*\\d{3}$$/'\'' '\''abc123'\'' '\''abc12a'\'' abc123 abcB<12a> (B<^[a-z]*>\\d{3}$$)",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "Olivier Delouya <olivier_delouya@hotmail.com>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
@@ -583,7 +583,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '         "web" : "https://github.com/odjectif/tstregex"' >> META_new.json
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "1.03",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "1.04",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 4.02"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
@@ -893,8 +893,8 @@ testdb_static :: static pure_all
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="Tstregex" VERSION="1.03">' > Tstregex.ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part Example: $$ perl lib/Tstregex.pm '\''/^[a-z]*\d{3}$$/'\'' '\''abc123'\'' '\''abc12a'\'' abc123 abcB&lt;12a&gt; (B&lt;^[a-z]*&gt;\d{3}$$)</ABSTRACT>' >> Tstregex.ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="Tstregex" VERSION="1.04">' > Tstregex.ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>A Hybrid Regex Diagnostic Tool (single file Library module and command tool) shows the longest Regular Expression match / highlight the rejected part</ABSTRACT>' >> Tstregex.ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Olivier Delouya &lt;olivier_delouya@hotmail.com&gt;</AUTHOR>' >> Tstregex.ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> Tstregex.ppd
 	$(NOECHO) $(ECHO) '        <PERLCORE VERSION="5,010,0,0" />' >> Tstregex.ppd
